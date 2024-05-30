@@ -13,3 +13,11 @@ typedef struct {    // Stack structure
 void initializeStack(Stack *s) {    // Initialize stack
     s->top = -1;
 }
+
+int isEmpty(Stack *s) {     // Check if stack is empty
+    return s->top == -1;
+}
+
+int isFull(Stack *s) {      // Check if stack is full
+    return s->top == MAX_STACK_SIZE - 1;
+}
