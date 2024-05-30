@@ -68,3 +68,33 @@ void performOperation(Stack *s, char operator) {    // operators
 
     push(s, result);
 }
+
+int main() {
+    Stack stack;
+    initializeStack(&stack);
+
+    char input[500];
+
+    printf("\n\t\t\t\t\t    +++++++++++++++++++++++++++++++++");
+    printf("\n\t\t\t\t\t    +  REVERSE POLISH CALCULATOR    +");
+    printf("\n\t\t\t\t\t    +++++++++++++++++++++++++++++++++");
+    printf("\n\nEnter RPN (Reverse Polish notation) expression: ");
+    fgets(input, sizeof(input), stdin);
+
+    char *token = strtok(input, " \n");
+
+    while (token != NULL) {
+        if (isdigit(token[0]) || (token[0] == '-' && isdigit(token[1]))) {
+            push(&stack, atof(token));
+        } else if (strlen(token) == 1 && strchr("+-*/", token[0])) {
+            performOperation(&stack, token[0]);
+        } else if (strcmp(token, "=") == 0) {
+            printf("Result: %.2f\n", pop(&stack));
+        } else {
+            printf("Invalid input: %s\n", token);
+            exit(EXIT_FAILURE);
+        }
+
+        token = strtok(NULL, " \n");
+    }
+}
