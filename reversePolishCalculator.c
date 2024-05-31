@@ -97,4 +97,9 @@ int main() {
 
         token = strtok(NULL, " \n");
     }
+    if (!isEmpty(&stack)) {
+        printf("Warning: There are leftover elements in the stack.\n");
+    }
+    
+    return 0;
 }
