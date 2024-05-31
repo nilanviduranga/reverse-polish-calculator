@@ -66,7 +66,7 @@ void performOperation(Stack *s, char operator) {    // operators
             exit(EXIT_FAILURE);
     }
 
-    push(s, result);
+    push(s, result);
 }
 
 int main() {
@@ -101,5 +101,5 @@ int main() {
         printf("Warning: There are leftover elements in the stack.\n");
     }
     
-    return 0;
+    return 0;
 }
